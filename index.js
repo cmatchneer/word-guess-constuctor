@@ -5,12 +5,7 @@ var game = new Game();
 var setUp = new SetUp();
 
 var play = function() {
-    // if (game.guessCount === 10) {
-    //     setUp.setUp();
-    //     console.log(setUp.cpuGuess);
-    //     console.log(setUp.theLetters.join(""));
-    // }
-
+    console.log(game.guessArray.join(""));
     inquirer.prompt([{
         type: "input",
         name: "userInput",
@@ -19,7 +14,7 @@ var play = function() {
         console.log(response.userInput);
 
         game.game(response.userInput);
-        console.log(setUp.theLetters.join(""));
+        // console.log(setUp.theLetters.join(""));
         play();
     })
 }
