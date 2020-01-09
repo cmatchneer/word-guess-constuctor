@@ -3,9 +3,12 @@ var SetUp = require("./setUp");
 var Game = require("./game");
 var game = new Game();
 var setUp = new SetUp();
-
+game.setUp();
 var play = function() {
     console.log(game.guessArray.join(""));
+    console.log(game.cpuGuess);
+
+
     inquirer.prompt([{
         type: "input",
         name: "userInput",
@@ -14,8 +17,10 @@ var play = function() {
         console.log(response.userInput);
 
         game.game(response.userInput);
-        // console.log(setUp.theLetters.join(""));
+
         play();
+
     })
+
 }
 play();
