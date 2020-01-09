@@ -4,15 +4,12 @@ var Game = require("./game");
 var game = new Game();
 var setUp = new SetUp();
 
-// var comapre = setUp.theLetters.join("");
-// console.log(comapre);
-
-
 var play = function() {
-    if (game.guessCount === 10) {
-        setUp.setUp();
-        console.log(setUp.cpuGuess);
-    }
+    // if (game.guessCount === 10) {
+    //     setUp.setUp();
+    //     console.log(setUp.cpuGuess);
+    //     console.log(setUp.theLetters.join(""));
+    // }
 
     inquirer.prompt([{
         type: "input",
