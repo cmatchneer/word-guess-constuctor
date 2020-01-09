@@ -5,13 +5,17 @@ var GameOver = function() {
     this.losses = 0;
     this.win = function(guessCount) {
         this.wins++;
-        console.log("Yay you win you had " + guessCount + " guess left", "\n",
+        console.log("\n", "Yay you win you had " + guessCount + " guess left", "\n",
             "You have won " + this.wins + " times");
     }
     this.loss = function(cpuGuess) {
         this.losses++;
         console.log("\n", "You lost looks like you need to brush up on your spelling ",
             "\n", cpuGuess + " was the word you missed", "\n", "You have lost " + this.losses + " times");
+    }
+    this.done = function() {
+        console.log("\n", "Thanks for playing you won " + this.wins + " times", "\n",
+            " You lost " + this.losses + " times")
     }
 
 

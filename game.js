@@ -1,9 +1,9 @@
 var Game = function() {
     this.words = ["coding", "css", "javascript", "node", "mysql", "bugs", "debugging"];
     this.cpuGuess = this.words[Math.floor(Math.random() * this.words.length)];
-
     this.guessArray = [];
     this.setUp = function() {
+        this.cpuGuess = this.words[Math.floor(Math.random() * this.words.length)];
         for (var i = 0; i < this.cpuGuess.length; i++) {
             this.guessArray[i] = "_";
         }
