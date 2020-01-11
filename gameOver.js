@@ -1,21 +1,19 @@
-var Game = require("./game");
-var game = new Game();
 var GameOver = function() {
     this.wins = 0;
     this.losses = 0;
-    this.win = function(guessCount) {
+    this.win = function() {
         this.wins++;
-        console.log("\n", "Yay you win you had " + guessCount + " guess left", "\n",
+        console.log("\n", "The force was with you", "\n",
             "You have won " + this.wins + " times");
     }
-    this.loss = function(cpuGuess) {
+    this.lose = function(cpuGuess) {
         this.losses++;
-        console.log("\n", "You lost looks like you need to brush up on your spelling ",
+        console.log("\n", "You need more training in the force ",
             "\n", cpuGuess + " was the word you missed", "\n", "You have lost " + this.losses + " times");
     }
     this.done = function() {
-        console.log("\n", "Thanks for playing you won " + this.wins + " times", "\n",
-            " You lost " + this.losses + " times")
+        console.log("\n", "May the force be with you" + '\n', "Your win total: " + this.wins, "\n",
+            " Your total losses: " + this.losses)
     }
 
 
