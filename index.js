@@ -32,9 +32,6 @@ var startUp = function() {
         }
     })
 }
-
-
-
 var diffculty = function() {
     var cpuGuess = theWords[Math.floor(Math.random() * theWords.length)];
     var word = new Words(cpuGuess);
@@ -108,8 +105,6 @@ var helpDesk = function(cpu, word) {
         message: "would you like a tip?",
         name: "tip"
     }]).then(function(res) {
-        // console.log(res.tip);
-        // console.log(tips[cpu]);
         if (res.tip) {
             console.log("This is all the help we can offer you may the force be with you", '\n', tips[cpu]);
             tipNum++;
@@ -120,7 +115,6 @@ var helpDesk = function(cpu, word) {
             theGame(cpu, word);
         }
     })
-
 }
 var done = function() {
     inquirer.prompt([{

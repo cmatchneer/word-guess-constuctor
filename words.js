@@ -4,13 +4,11 @@ var Word = function(word) {
     this.wordArray = [];
     this.wordBuilder = function() {
         for (var i = 0; i < word.length; i++) {
-
             var letter = new Letters(word[i]);
             this.wordArray.push(letter);
             this.wordArray[i].setUp();
             this.wordString.push(this.wordArray[i].letter);
             this.wordString.join("");
-
         }
     }
     this.checker = function(userInput) {
@@ -18,7 +16,6 @@ var Word = function(word) {
             this.wordArray[j].check(userInput);
             this.wordArray[j].setUp();
             this.wordString[j] = this.wordArray[j].letter;
-
         }
     }
 }

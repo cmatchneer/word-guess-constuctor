@@ -15,7 +15,5 @@ var GameOver = function() {
         console.log("\n", "May the force be with you" + '\n', "Your win total: " + this.wins, "\n",
             " Your total losses: " + this.losses)
     }
-
-
 }
 module.exports = GameOver;
