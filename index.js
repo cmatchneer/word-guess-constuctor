@@ -3,8 +3,21 @@ var GameOver = require("./gameOver");
 var gameOver = new GameOver();
 var Words = require("./words");
 var theWords = ["jedi", "sith", "clones", "empire", "rebels", "the republic", "lightsaber", "droids", "cis"];
+var tips = {
+    jedi: "this group use the light side of the force and focus on helping others",
+    sith: "this group use the dark side of the force and focus on helping themselves",
+    clones: "the men who made up the grand army of the republic are ______",
+    empire: "the force the ruled the galaxy after the fall of the republic lead by emperor palpatine",
+    rebels: "the force that resisted the rule of emperor palpatine",
+    "the republic": "the goverment that was made up of the galatic senate that ruled in peace for thousands of years",
+    lightsaber: "the weapon of choice for both jedi and sith",
+    droids: "the ______ army was largest of its kind and was used to fight the republic",
+    cis: "the short hand name for goverment of planets that broke away from the republic"
+}
+var tipNum = 0;
 var guessCount = 0;
 var guesses = []
+console.log(tips["jedi"]);
 var startUp = function() {
     inquirer.prompt([{
         type: "confirm",
@@ -58,7 +71,7 @@ var theGame = function(cpu, user) {
 
     }
 
-    console.log(guessCount);
+    console.log("Guesses Remaining " + guessCount);
     console.log(user.wordString.join(""));
     if (guessCount > 0 && user.wordString.join("") === cpu) {
         gameOver.win();
@@ -79,9 +92,34 @@ var theGame = function(cpu, user) {
             guesses.push(res.userGuess);
             console.log('\n', "Your guesses so far: " + guesses.join(""), '\n');
             user.checker(res.userGuess);
-            theGame(cpu, user);
+            if (tipNum === 0) {
+                helpDesk(cpu, user);
+            }
+            if (tipNum === 1) {
+                theGame(cpu, user);
+            }
         })
     }
+
+}
+var helpDesk = function(cpu, word) {
+    inquirer.prompt([{
+        type: "confirm",
+        message: "would you like a tip?",
+        name: "tip"
+    }]).then(function(res) {
+        // console.log(res.tip);
+        // console.log(tips[cpu]);
+        if (res.tip) {
+            console.log("This is all the help we can offer you may the force be with you", '\n', tips[cpu]);
+            tipNum++;
+            theGame(cpu, word);
+        }
+        if (!res.tip) {
+            console.log("If the force isnt enough of guide we shall be here");
+            theGame(cpu, word);
+        }
+    })
 
 }
 var done = function() {
@@ -92,6 +130,7 @@ var done = function() {
     }]).then(function(res) {
         if (res.replay) {
             console.log('\n', "There is no Try", '\n');
+            tipNum = 0;
             diffculty();
         }
         if (!res.replay) {
