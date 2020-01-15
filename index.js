@@ -17,7 +17,6 @@ var tips = {
 var tipNum = 0;
 var guessCount = 0;
 var guesses = []
-console.log(tips["jedi"]);
 var startUp = function() {
     inquirer.prompt([{
         type: "confirm",
@@ -41,7 +40,6 @@ var diffculty = function() {
         choices: ["Padawan", "Jedi Knight", "Jedi Master"],
         name: "diffcultyLevel"
     }]).then(function(res) {
-
         switch (res.diffcultyLevel) {
             case "Padawan":
                 guessCount = 25;
@@ -65,9 +63,7 @@ var theGame = function(cpu, user) {
     if (user.wordString.length === 0) {
         guesses = [];
         user.wordBuilder();
-
     }
-
     console.log("Guesses Remaining " + guessCount);
     console.log(user.wordString.join(""));
     if (guessCount > 0 && user.wordString.join("") === cpu) {
@@ -77,7 +73,6 @@ var theGame = function(cpu, user) {
     if (guessCount === 0 && user.wordString.join("") !== cpu) {
         gameOver.lose(cpu);
         done();
-
     }
     if (guessCount > 0 && user.wordString.join("") !== cpu) {
         inquirer.prompt([{
@@ -97,7 +92,6 @@ var theGame = function(cpu, user) {
             }
         })
     }
-
 }
 var helpDesk = function(cpu, word) {
     inquirer.prompt([{
